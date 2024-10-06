@@ -3,9 +3,10 @@ import Link from "next/link";
 import React from "react";
 
 interface Memes {
-  id: number;
   name: string;
   url: string;
+  id: number;
+  box_count: number;
 }
 
 export default async function Home() {
@@ -26,6 +27,7 @@ export default async function Home() {
                 query: {
                   url: item.url,
                   id: item.id,
+                  box_count: item.box_count,
                 }
               }}>Generate Meme</Link></button>
             </div>
