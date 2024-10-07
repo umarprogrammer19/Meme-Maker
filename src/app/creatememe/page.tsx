@@ -60,6 +60,17 @@ const CreateMeme = ({ searchParams }: { searchParams: Meme }) => {
         return inputs;
     };
 
+    const handleDownload = () => {
+        if (generatedMemeImage) {
+            const link = document.createElement('a');
+            link.href = generatedMemeImage;
+            link.download = 'meme.png'; 
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    };
+
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900">
             <h1 className="text-6xl font-bold text-center mt-12 mb-8 text-cyan-400 shadow-lg">
@@ -85,6 +96,12 @@ const CreateMeme = ({ searchParams }: { searchParams: Meme }) => {
                 {generatedMemeImage && (
                     <div className="flex flex-col items-center bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
                         <Image src={generatedMemeImage} alt='Generated Meme' width={500} height={300} className="rounded-lg" />
+                        <button
+                            onClick={handleDownload}
+                            className="w-full py-3 px-4 mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md shadow-md transition duration-200"
+                        >
+                            Download Meme
+                        </button>
                     </div>
                 )}
             </div>
