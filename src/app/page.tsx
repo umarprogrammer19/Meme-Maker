@@ -21,7 +21,7 @@ export default async function Home() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
         {response && response.data.memes.map((item: Memes) => (
           <div key={item.id} className="flex flex-col items-center bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105 transform">
-            <div className="relative w-full h-0 pb-3/4"> {/* Aspect ratio of 4:3 */}
+            <div className="relative w-full h-64"> {/* Fixed height for consistency */}
               <Image
                 src={item.url}
                 alt={item.name}
