@@ -18,17 +18,20 @@ export default async function Home() {
       <h1 className="text-4xl font-bold underline text-center mt-4 mb-8 transition-transform duration-300 transform hover:scale-105">
         Meme Generator
       </h1>
-      <div className="flex justify-center gap-5 flex-wrap px-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
         {response && response.data.memes.map((item: Memes) => (
           <div key={item.id} className="flex flex-col items-center bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105 transform">
-            <Image
-              src={item.url}
-              alt={item.name}
-              width={200}
-              height={200}
-              className="object-cover"
-            />
-            <button className="btn my-2 border border-black bg-gray-900 text-white p-2 rounded-md hover:bg-gray-800 transition-colors duration-200">
+            <div className="relative w-full h-0 pb-3/4"> {/* Aspect ratio of 4:3 */}
+              <Image
+                src={item.url}
+                alt={item.name}
+                layout="fill"
+                objectFit="cover" // Maintain aspect ratio while covering the area
+                className="rounded-t-lg"
+              />
+            </div>
+            <div className="p-4 text-center">
+              <h2 className="font-semibold text-lg text-gray-800">{item.name}</h2>
               <Link href={{
                 pathname: "creatememe",
                 query: {
@@ -38,9 +41,11 @@ export default async function Home() {
                   box_count: item.box_count,
                 }
               }}>
-                Generate Meme
+                <button className="btn my-2 border border-black bg-gray-900 text-white p-2 rounded-md hover:bg-gray-800 transition-colors duration-200">
+                  Generate Meme
+                </button>
               </Link>
-            </button>
+            </div>
           </div>
         ))}
       </div>
