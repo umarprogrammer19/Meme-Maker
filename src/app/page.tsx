@@ -15,10 +15,10 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-gray-900 text-white">
-      <h1 className="text-5xl font-extrabold text-center mt-12 mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
+      <h1 className="text-6xl font-bold text-center mt-12 mb-16 text-cyan-400 shadow-lg">
         Meme Generator
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4 w-full max-w-7xl cursor-pointer">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4 w-full max-w-7xl">
         {response && response.data.memes.map((item: Memes) => (
           <div key={item.id} className="group flex flex-col bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-xl">
             <div className="relative w-full h-48 sm:h-64">
@@ -41,7 +41,7 @@ export default async function Home() {
                   box_count: item.box_count,
                 }
               }}>
-                <button className="w-full py-2 px-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-md shadow-md transition-all duration-300 transform hover:bg-gradient-to-l hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                <button className="w-full py-2 px-4 bg-green-600 text-white font-semibold rounded-md shadow-md transition-all duration-300 transform hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
                   Generate Meme
                 </button>
               </Link>
