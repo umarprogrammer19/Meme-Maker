@@ -25,6 +25,7 @@ export default async function Home() {
               <button className="btn my-2 border border-[black] p-2"><Link href={{
                 pathname: "creatememe",
                 query: {
+                  name: item.name,
                   url: item.url,
                   id: item.id,
                   box_count: item.box_count,
