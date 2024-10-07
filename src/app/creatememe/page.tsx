@@ -67,7 +67,7 @@ const CreateMeme = ({ searchParams }: { searchParams: Meme }) => {
                 <button type='submit'>Generate</button>
             </form>
 
-            {generatedMemeImage && <Image src={generatedMemeImage} alt='Generated Meme' width={200} height={200} />}
+            {generatedMemeImage && <Image src={generatedMemeImage} alt='Generated Meme' width={200} height={200} style={{ width: '100%', height: 'auto' }}  />}
         </>
     );
 };

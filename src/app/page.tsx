@@ -12,8 +12,7 @@ interface Memes {
 export default async function Home() {
   const data = await fetch("https://api.imgflip.com/get_memes");
   const response = await data.json();
-  console.log(response.data.memes);
-
+  
   return (
     <>
       <h1 className="text-3xl underline text-center mt-4 mb-8">Meme Generator</h1>
