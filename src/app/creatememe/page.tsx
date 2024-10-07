@@ -1,6 +1,7 @@
 "use client";
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { saveAs } from 'file-saver';
 
 interface Meme {
     name: string;
@@ -62,12 +63,7 @@ const CreateMeme = ({ searchParams }: { searchParams: Meme }) => {
 
     const handleDownload = () => {
         if (generatedMemeImage) {
-            const link = document.createElement('a');
-            link.href = generatedMemeImage;
-            link.download = 'meme.png'; 
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            saveAs(generatedMemeImage, 'meme.png');
         }
     };
 
