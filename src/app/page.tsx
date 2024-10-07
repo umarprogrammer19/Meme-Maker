@@ -14,24 +14,24 @@ export default async function Home() {
   const response = await data.json();
 
   return (
-    <div className="min-h-screen flex flex-col items-center bg-gradient-to-br from-blue-600 to-purple-600 text-white">
-      <h1 className="text-5xl font-extrabold underline text-center mt-6 mb-8 transition-transform duration-300 transform hover:scale-105">
+    <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-[#1a1a2e] to-[#16213e] text-white">
+      <h1 className="text-6xl font-extrabold text-center mt-12 mb-16 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
         Meme Generator
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4 w-full max-w-7xl">
         {response && response.data.memes.map((item: Memes) => (
-          <div key={item.id} className="flex flex-col items-center bg-white rounded-lg shadow-2xl overflow-hidden transition-transform duration-300 transform hover:scale-105 hover:shadow-xl">
-            <div className="relative w-full h-64"> {/* Fixed height for consistency */}
+          <div key={item.id} className="group flex flex-col bg-[#0f3460] rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+            <div className="relative w-full h-48 sm:h-64">
               <Image
                 src={item.url}
                 alt={item.name}
                 layout="fill"
-                objectFit="cover" // Maintain aspect ratio while covering the area
-                className="rounded-t-lg transition-transform duration-500 transform hover:scale-105"
+                objectFit="cover"
+                className="rounded-t-xl group-hover:opacity-80 transition-opacity duration-300"
               />
             </div>
-            <div className="p-4 text-center bg-gradient-to-b from-white to-gray-100">
-              <h2 className="font-bold text-lg text-gray-800">{item.name}</h2>
+            <div className="p-4 text-center bg-[#1a1a2e]">
+              <h2 className="font-bold text-lg mb-2 truncate">{item.name}</h2>
               <Link href={{
                 pathname: "creatememe",
                 query: {
@@ -41,7 +41,7 @@ export default async function Home() {
                   box_count: item.box_count,
                 }
               }}>
-                <button className="btn my-2 border border-transparent bg-blue-600 text-white p-2 rounded-md shadow-md hover:bg-blue-500 transition-colors duration-300 transform hover:scale-105">
+                <button className="w-full py-2 px-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-md shadow-md hover:from-purple-600 hover:to-pink-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transform transition-all duration-300 hover:scale-105">
                   Generate Meme
                 </button>
               </Link>
