@@ -14,6 +14,8 @@ const CreateMeme = ({ searchParams }: { searchParams: Meme }) => {
     const [generatedMemeImage, setGeneratedMemeImage] = useState<string | null>(null);
     const [inputTexts, setInputTexts] = useState<{ [key: string]: string }>({});
     const [loading, setLoading] = useState<boolean>(false);
+    const userName: string = "umarprogrammer19";
+    const password: string = "Ugsofficial190807"
 
     const handleInputChange = (index: number, value: string) => {
         setInputTexts(prev => ({ ...prev, [`text_${index}`]: value }));
@@ -25,7 +27,7 @@ const CreateMeme = ({ searchParams }: { searchParams: Meme }) => {
 
         const filledInputs = Object.values(inputTexts).filter(text => text.trim() !== '');
         const boxesParams = filledInputs.map((text, index) => `boxes[${index}][text]=${encodeURIComponent(text)}`).join('&');
-        const apiUrl = `https://api.imgflip.com/caption_image?template_id=${searchParams.id}&username=umarprogrammer19&password=Ugsofficial190807&${boxesParams}`;
+        const apiUrl = `https://api.imgflip.com/caption_image?template_id=${searchParams.id}&username=${userName}&password=${password}&${boxesParams}`;
 
         try {
             const response = await fetch(apiUrl);
